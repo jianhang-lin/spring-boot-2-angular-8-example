@@ -10,6 +10,6 @@ export class CarService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get("//localhost:8080/caol-cars");
+    return this.http.get("http://localhost:8080/cool-cars");
   }
 }
