@@ -6,4 +6,6 @@ import work.jianhang.server.entity.Car;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
+
+    Car findCarByName(String name);
 }
