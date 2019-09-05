@@ -22,11 +22,6 @@ public class CoolCarController {
         return carRepository.findAll().stream().filter(this::isCool).collect(Collectors.toList());
     }
 
-    @GetMapping("/cars/{id}")
-    public Car getCarsByid(@PathVariable String id) {
-        return carRepository.findById(Long.valueOf(id)).get();
-    }
-
     private boolean isCool(Car car) {
         return !Objects.equals(car.getName(), "AMC Gremlin") &&
                 !Objects.equals(car.getName(), "Triumph Stag") &&
