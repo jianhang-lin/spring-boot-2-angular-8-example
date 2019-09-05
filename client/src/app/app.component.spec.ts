@@ -1,12 +1,18 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { OktaAuthModule } from '@okta/okta-angular';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        OktaAuthModule.initAuth({
+          issuer: 'https://not-real.okta.com',
+          clientId: 'fake-client-id',
+          redirectUri: 'http://localhost:4200'
+        })
       ],
       declarations: [
         AppComponent
@@ -26,10 +32,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('client');
   });
 
-  it('should render title', () => {
+  it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('client app is running!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to client!');
   });
 });
